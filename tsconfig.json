@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
+
+// Co-pilot's suggestion for a package
+// {
+//   "compilerOptions": {
+//     "target": "ES5", // ES5 is widely supported, even in older environments
+//     "lib": ["dom", "dom.iterable", "es2015", "es2016", "es2017", "es2018", "es2019", "es2020", "es2021", "es2022"], // Include type declarations for ES2015 (ES6) to ES2022 features
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "strict": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "module": "CommonJS", // Node.js and many bundlers use CommonJS
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "declaration": true, // Generate .d.ts files for TypeScript users
+//     "outDir": "lib", // Output directory for compiled files
+//     "jsx": "react-jsx"
+//   },
+//   "include": ["src"],
+//   "exclude": ["node_modules", "**/*.test.ts"] // Exclude node_modules and test files from the compilation
+// }

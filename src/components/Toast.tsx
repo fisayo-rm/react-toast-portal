@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import "./Toast.css";
 import type { Toast } from "../type";
-import { useToast } from "../ToastContext";
+import { useToastContext } from "../ToastContext";
 
 type ToastProps = {
   status: Toast;
@@ -11,7 +11,7 @@ type ToastProps = {
 
 const ToastComponent: React.FC<ToastProps> = ({ status, delayed = false }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const { removeToast } = useToast();
+  const { removeToast } = useToastContext();
   const notificationClass = useMemo(() => {
     const classes: Record<string, boolean> = {};
 

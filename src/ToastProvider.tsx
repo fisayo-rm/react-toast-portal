@@ -46,15 +46,13 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
     return "Info";
   };
 
-  const showToast = (status: ToastOptions) => {
-    if (!status.type) {
-      status.type = "success";
-    }
+  const showToast = (status: ToastOptions): string => {
     const id = uuidV4();
     const toast: Toast = Object.assign({}, status, { id });
     toast.title = getTitle(status);
     toast.theme = status.theme ? status.theme : settings.theme;
     setToasts((currentToasts) => [...currentToasts, toast]);
+    return toast.id;
   };
 
   const removeToast = (id: string) => {

@@ -51,3 +51,5 @@ export interface ToastOptions extends BaseSettings {
 export interface Toast extends ToastOptions {
   id: string;
 }
+
+export type Status = string | ToastOptions;

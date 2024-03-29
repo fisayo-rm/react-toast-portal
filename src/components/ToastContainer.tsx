@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./ToastContainer.css";
 import ToastComponent from "./Toast";
 import useSettings from "../hooks/useSettings";
-import { useToast } from "../ToastContext";
+import { useToastContext } from "../ToastContext";
 
 const ToastContainer = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { settings, updateSettings } = useSettings();
-  const { toasts } = useToast();
+  const { toasts } = useToastContext();
   useEffect(() => {
     setIsLoaded(true);
   }, []);

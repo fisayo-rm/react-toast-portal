@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import "./Toast.css";
 import type { Toast } from "../type";
 import { useToast } from "../ToastContext";
 

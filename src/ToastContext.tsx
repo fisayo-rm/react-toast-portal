@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import type { Toast } from "./type";
+import type { Toast, ToastOptions } from "./type";
 
 type ContextType = {
-  showToast: (body: string) => void;
+  showToast: (status: ToastOptions) => void;
   removeToast: (id: string) => void;
   toasts: Toast[];
 };

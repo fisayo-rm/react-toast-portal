@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Toast } from "./type";
+import type { Toast, ToastOptions } from "./type";
 import { ToastContext } from "./ToastContext";
 import ToastContainer from "./components/ToastContainer";
 import ReactDOM from "react-dom";
+import useSettings from "./hooks/useSettings";
+import { isBoolean, uuidV4 } from "./utils";
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -11,10 +13,48 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
     console.log("TOAST PROVIDER MOUNTED");
   }, []);
 
-  const showToast = (body: string) => {
-    console.log("SHOWING TOAST");
-    const id = Math.random().toString(36).substring(2, 12);
-    setToasts((currentToasts) => [...currentToasts, { id, body }]);
+  const { settings } = useSettings();
+
+  const getTitle = (status: ToastOptions) => {
+    if (status.title) {
+      return status.title;
+    }
+
+    if (isBoolean(status.defaultTitle)) {
+      if (status.defaultTitle) {
+        if (status.mode === "prompt" || status.mode === "loader") {
+          return "";
+        }
+
+        if (status.type) {
+          return status.type.charAt(0).toUpperCase() + status.type.slice(1);
+        }
+      } else {
+        return "";
+      }
+    }
+
+    if (settings.defaultTitle) {
+      if (status.mode === "prompt" || status.mode === "loader") {
+        return "";
+      }
+
+      if (status.type) {
+        return status.type.charAt(0).toUpperCase() + status.type.slice(1);
+      }
+    }
+    return "Info";
+  };
+
+  const showToast = (status: ToastOptions) => {
+    if (!status.type) {
+      status.type = "success";
+    }
+    const id = uuidV4();
+    const toast: Toast = Object.assign({}, status, { id });
+    toast.title = getTitle(status);
+    toast.theme = status.theme ? status.theme : settings.theme;
+    setToasts((currentToasts) => [...currentToasts, toast]);
   };
 
   const removeToast = (id: string) => {

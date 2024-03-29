@@ -1,3 +1,64 @@
 .rtp-cloak {
   display: none;
 }
+
+.rtp-notification-container {
+  pointer-events: none;
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: auto;
+  height: auto;
+  z-index: 99999;
+}
+
+.rtp-backdrop-hidden {
+  transition: all 150ma ease-out;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.rtp-backdrop-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rtp-top {
+  top: 0;
+}
+
+.rtp-centerY {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rtp-bottom {
+  bottom: 0;
+}
+
+.rtp-left {
+  left: 0;
+}
+
+.rtp-centerX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.rtp-right {
+  right: 0;
+}
+
+.rtp-top {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

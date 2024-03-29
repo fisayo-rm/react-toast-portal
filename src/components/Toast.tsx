@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Toast } from "../type";
+import type { Toast } from "../type";
 import { useToast } from "../ToastContext";
 
 type ToastProps = {
@@ -8,7 +8,7 @@ type ToastProps = {
   delayed?: boolean;
 };
 
-const Toast: React.FC<ToastProps> = ({ status, delayed }) => {
+const ToastComponent: React.FC<ToastProps> = ({ status, delayed = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { removeToast } = useToast();
   const notificationClass = useMemo(() => {
@@ -47,10 +47,10 @@ const Toast: React.FC<ToastProps> = ({ status, delayed }) => {
     >
       <div className="rtp-content">
         {status.title && <h2 className="rtp-title">{status.title}</h2>}
-        {status.body && <h2 className="rtp-paragraph">{status.title}</h2>}
+        {status.body && <h2 className="rtp-paragraph">{status.body}</h2>}
       </div>
     </div>
   );
 };
 
-export default Toast;
+export default ToastComponent;

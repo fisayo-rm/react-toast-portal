@@ -47,3 +47,7 @@ export interface ToastOptions extends BaseSettings {
   callback?: CallableFunction;
   delay?: number;
 }
+
+export interface Toast extends ToastOptions {
+  id: string;
+}

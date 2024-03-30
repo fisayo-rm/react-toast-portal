@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import "./Toast.css";
 import type { Toast } from "../type";
 import { useToastContext } from "../ToastContext";
+import IconComponent from "./IconComponent";
 
 type ToastProps = {
   status: Toast;
@@ -50,6 +51,7 @@ const ToastComponent: React.FC<ToastProps> = ({ status, delayed = false }) => {
         {status.title && <h2 className="rtp-title">{status.title}</h2>}
         {status.body && <h2 className="rtp-paragraph">{status.body}</h2>}
       </div>
+      <IconComponent mode={status.mode} type={status.type} icon={status.icon} />
     </div>
   );
 };
